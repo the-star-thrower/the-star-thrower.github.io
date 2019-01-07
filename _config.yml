@@ -1,11 +1,11 @@
  github: [metadata]
  title: butt first coffee
  encoding: UTF-8
- description: Welcome to Katherine Maack's personal site
+ description: Hi, my name's Katherine. I'm a software developer.
  kramdown:
    input: GFM
    hard_wrap: false
  future: true
  jailed: false
- theme: jekyll-theme-tactile
+ #theme: jekyll-theme-tactile
  gfm_quirks: paragraph_end
