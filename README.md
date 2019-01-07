@@ -1,5 +1,6 @@
 # katherinetaylormaack.com
-[My personal website](www.katherinetaylormaack.com)
+
+[my website](http://www.katherinetaylormaack.com)
 
 # Resources
 
