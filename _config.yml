@@ -1,7 +1,7 @@
  github: [metadata]
  title: butt first coffee
  encoding: UTF-8
- description: Hi, my name's Katherine. I'm a software developer.
+#description: Hi, my name's Katherine. I'm a software developer located in Portland, Oregon.
  kramdown:
    input: GFM
    hard_wrap: false
