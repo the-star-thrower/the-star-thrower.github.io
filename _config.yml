@@ -1,5 +1,7 @@
  github: [metadata]
+ title: butt first coffee
  encoding: UTF-8
+ description: Welcome to Katherine Maack's personal site
  kramdown:
    input: GFM
    hard_wrap: false
