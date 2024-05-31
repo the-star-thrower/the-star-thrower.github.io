@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="stylesheet" type="text/css" href="/assets/css/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Katherine Maack | the website. v professional.</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Katherine Maack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="the website. v professional." />
+<meta property="og:description" content="the website. v professional." />
+<link rel="canonical" href="http://localhost:4000/website-how-to.html" />
+<meta property="og:url" content="http://localhost:4000/website-how-to.html" />
+<meta property="og:site_name" content="Katherine Maack" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Katherine Maack" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"the website. v professional.","headline":"Katherine Maack","url":"http://localhost:4000/website-how-to.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Katherine Maack</h1>
+          <h2>Hi, my name is Katherine. I'm a software developer based in Portland, Oregon.</h2>
+          <!-- uncomment this to enable _config.yml description stanza
+          <h2>the website. v professional.</h2> -->
+          <a href="./">home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="./gallery.html">gallery</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="./resume.html">resume</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="./personal.html">personal blog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="./tech.html">tech blog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="./website-how-to.html">Writing Sample</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </header>
+        <section id="downloads" class="clearfix">
+          
+	
+        </section>
+        <hr>
+        <section id="main_content">
+          <h1 id="how-to-create-a-static-website-with-a-custom-domain">How to create a static website with a custom domain</h1>
+<p><br />
+<strong>Estimated read time</strong>: 4 minutes<br />
+<strong>Estimated task time</strong>: 60 minutes</p>
+
+<h2 id="tools">Tools</h2>
+<ul>
+  <li><strong>Github Pages</strong> - static site hosting</li>
+  <li><strong>AWS route53</strong> - domain registration and hosting</li>
+  <li><strong>Jekyll</strong> - our static site generator</li>
+</ul>
+
+<h2 id="steps">Steps</h2>
+<h3 id="prerequisites"><a href="#install-prerequisites">Prerequisites</a></h3>
+<h3 id="create-a-github-pages-static-site"><a href="#create-github-pages-site">Create a Github Pages static site</a></h3>
+<h3 id="setup-a-domain-with-aws-route53"><a href="#route53-configuration">Setup a domain with AWS Route53</a></h3>
+<h3 id="point-the-custom-domain-to-the-github-pages-site"><a href="#connect-domain-to-site">Point the custom domain to the Github Pages site</a></h3>
+<h2 id="details">Details</h2>
+<h3 id="install-prerequisites">Install Prerequisites</h3>
+<ul>
+  <li>install <a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby</a></li>
+  <li>install <a href="https://bundler.io/">Bundler</a></li>
+  <li>install <a href="https://jekyllrb.com/docs/installation/">Jekyll</a></li>
+  <li>install <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git">Git</a></li>
+</ul>
+
+<h3 id="create-github-pages-site">Create Github Pages Site</h3>
+<p>We’ll be using <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll">these directions</a>
+for reference.</p>
+<ol>
+  <li>Create a github repository</li>
+  <li>Enable Github Pages for your new repository
+<img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/enable-github-pages-for-repo.jpg?raw=true" alt="" /></li>
+  <li>Create a new jekyll site in the top-level directory of your new project. You should at most have <code class="language-plaintext highlighter-rouge">CNAME</code>, 
+<code class="language-plaintext highlighter-rouge">LICENSE</code>, and <code class="language-plaintext highlighter-rouge">README.md</code> files so running <code class="language-plaintext highlighter-rouge">jekyll new --skip-bundle . --force</code> shouldn’t overwrite any files, despite
+the warning.</li>
+  <li>Follow the directions to update the Gemfile and run <code class="language-plaintext highlighter-rouge">bundle install</code>. You may need to edit the version of the <code class="language-plaintext highlighter-rouge">Jekyll</code>
+gem in addition to the <code class="language-plaintext highlighter-rouge">github-pages</code> depending on Github’s <a href="https://pages.github.com/versions/">dependency version</a> for Jekyll.</li>
+  <li>Follow the remaining directions on testing your site locally and committing your work.</li>
+</ol>
+
+<h3 id="route53-configuration">Route53 Configuration</h3>
+<ol>
+  <li>Create an AWS account or login</li>
+  <li>Navigate to the Route 53 service
+<img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/route-53-console.png?raw=true" alt="" /></li>
+  <li>Choose a domain
+<img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/choose-domain.png?raw=true" alt="" />
+Today i’m favoring being cheap and carbohydrate polymers are on my mind, so i’ll go with the $9/year <code class="language-plaintext highlighter-rouge">.de</code> TLD
+and a snappy domain to talk about oligosaccharides.</li>
+  <li>Step through the domain registration process</li>
+  <li>We now have a registered domain. There will be some latency while AWS configures this domain in its backend, 
+so after a few minutes, be sure to confirm you can see your domain in <code class="language-plaintext highlighter-rouge">Route 53</code> -&gt; <code class="language-plaintext highlighter-rouge">Domains</code> -&gt; <code class="language-plaintext highlighter-rouge">Registered Domains</code>. 
+Our next step is to ensure the domain directs us to our Github Pages-hosted site.</li>
+</ol>
+
+<h3 id="connect-domain-to-site">Connect Domain to Site</h3>
+<p>Now that we have our Github Pages site setup and our Route 53 domain registered, we want to ensure our new domain
+directs us to our Github Pages site. For example, by default the domain for this website is <code class="language-plaintext highlighter-rouge">the-star-thrower.github.io</code>, 
+so I configured the custom domain <code class="language-plaintext highlighter-rouge">katherinetaylormaack.com</code> to also direct to this Github Pages-hosted site. We’ll be using
+<a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">these directions</a> as a reference.</p>
+<ol>
+  <li>In your Github Pages repository, navigate to <code class="language-plaintext highlighter-rouge">Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Pages</code> and under <code class="language-plaintext highlighter-rouge">Custom domain</code>, type your custom domain and save.
+Even if you receive the following error, Github should still successfully create a CNAME file in your project.
+<img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/error-custom-domain.png?raw=true" alt="" /></li>
+  <li>In the Route 53 interface, open <code class="language-plaintext highlighter-rouge">Hosted zones</code>. Select your custom domain then select <code class="language-plaintext highlighter-rouge">create record</code>. Create an <code class="language-plaintext highlighter-rouge">A</code> 
+record pointed to the following addresses:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+</code></pre></div>    </div>
+    <p><img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/create-a-record.png?raw=true" alt="" /></p>
+  </li>
+  <li>After clicking <code class="language-plaintext highlighter-rouge">create record</code>, you should be able to navigate to your website and see the simple Jekyll-based
+website you created. It should look something like <a href="http://oligosacchari.de/">this</a>.</li>
+  <li>That’s it, you’re done!</li>
+</ol>
+
+<p><img src="https://gifdb.com/images/high/you-did-it-happy-willy-wonka-and-chocolate-factory-2s1venj99oc71li9.gif" alt="" /></p>
+
+<h3 id="extra-credit">Extra Credit</h3>
+<p>If you’d like to dress up your new website, try following <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll">these directions</a>
+to add a custom theme to your new site!</p>
+
+<h2 id="problems-and-their-solutions">Problems and their Solutions</h2>
+<h3 id="problem-running-gem-install-bundler-on-macos-results-in"><span style="color:#EA5F41">Problem: running <code class="language-plaintext highlighter-rouge">gem install bundler</code> on MacOS results in:</span></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You don't have write permissions for the /Library/Ruby/Gems/${VERSION} directory.
+</code></pre></div></div>
+
+<h3 id="solution"><span style="color:#479F3F">Solution</span></h3>
+<p>MacOS ships with its own copy of Ruby, and does not want the user to have edit privileges for this version.</p>
+
+<p>Let’s instead install a separate version of Ruby that won’t interfere with the builtin MacOS
+version, and we’ll update the path variable to use the new Ruby version. We’ll be using <code class="language-plaintext highlighter-rouge">rbenv</code>, but other options
+include <code class="language-plaintext highlighter-rouge">chruby</code> and <code class="language-plaintext highlighter-rouge">RVM</code>.</p>
+<ul>
+  <li>install <a href="https://github.com/rbenv/rbenv">rbenv</a></li>
+  <li><code class="language-plaintext highlighter-rouge">rbenv init</code></li>
+  <li>You may need to modify your shell initialization files to bootstrap rbenv functionality. In my case, 
+I use fish shell so I appended <code class="language-plaintext highlighter-rouge">status --is-interactive; and rbenv init - fish | source</code> to 
+<code class="language-plaintext highlighter-rouge">~/.config/fish/config.fish</code>.<br />
+<strong>Note</strong>: <code class="language-plaintext highlighter-rouge">rbenv</code> should provide directions for doing this with your specific shell.</li>
+  <li><code class="language-plaintext highlighter-rouge">rbenv install {$VERSION}</code> (<code class="language-plaintext highlighter-rouge">rbenv install -l</code> for available versions)</li>
+  <li>verify you’re using the newly installed Ruby version with <code class="language-plaintext highlighter-rouge">ruby -v</code></li>
+  <li>re-run <code class="language-plaintext highlighter-rouge">gem install bundler</code></li>
+</ul>
+
+<h3 id="problem-running-bundle-exec-jekyll-serve-results-in"><span style="color:#EA5F41">Problem: running <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> results in:</span></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/maackk/.rbenv/versions/3.3.2/lib/ruby/gems/3.3.0/gems/jekyll-3.9.5/lib/jekyll/commands/serve/servlet.rb:3:in `require': cannot load such file -- webrick (LoadError)
+	...[stack trace]
+</code></pre></div></div>
+
+<h3 id="solution-1"><span style="color:#479F3F">Solution</span></h3>
+<p>run <code class="language-plaintext highlighter-rouge">bundle add webrick</code></p>
+
+<p>credit and explanation: <a href="https://github.com/jekyll/jekyll/issues/8523">@argilo on github</a></p>
+
+        </section>
+
+        <footer>
+          <a href="https://www.eiseley.org/Star_Thrower_Cook.pdf" target="_blank">"I understand" I said, "call me another thrower."</a>
+        </footer>
+
+      </div>
+    </div>
+
+    
+  </body>
+</html>
