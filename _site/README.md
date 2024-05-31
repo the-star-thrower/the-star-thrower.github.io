@@ -6,7 +6,7 @@
 
 ## How to use a custom domain name with Github Pages 
 
-[Source](http://sophiafeng.com/technical/2015/02/12/setting-up-custom-domain-name-with-github-pages-and-amazon-route-53/)
+[Source](https://web.archive.org/web/20151028213207/https://www.sophiafeng.com/technical/2015/02/12/setting-up-custom-domain-name-with-github-pages-and-amazon-route-53/)
 
 ## Setup Github Pages-based site locally
 

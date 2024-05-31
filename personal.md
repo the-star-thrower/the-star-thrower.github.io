@@ -1,4 +1,4 @@
 ---
 layout: default
-title: butt first coffee
+title: Katherine Maack
 ---
