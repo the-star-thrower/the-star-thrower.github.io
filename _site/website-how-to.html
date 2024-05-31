@@ -42,7 +42,7 @@
           <a href="./resume.html">resume</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="./personal.html">personal blog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="./tech.html">tech blog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="./website-how-to.html">Writing Sample</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="./website-how-to.html">writing sample</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </header>
         <section id="downloads" class="clearfix">
           
@@ -55,20 +55,24 @@
 <strong>Estimated read time</strong>: 4 minutes<br />
 <strong>Estimated task time</strong>: 60 minutes</p>
 
-<h2 id="tools">Tools</h2>
+<h2 id="about">About</h2>
+<p>This walkthrough will cover setting up a static website with a custom domain using the following tools:</p>
 <ul>
   <li><strong>Github Pages</strong> - static site hosting</li>
-  <li><strong>AWS route53</strong> - domain registration and hosting</li>
+  <li><strong>AWS Route 53</strong> - domain registration and hosting</li>
   <li><strong>Jekyll</strong> - our static site generator</li>
 </ul>
 
 <h2 id="steps">Steps</h2>
-<h3 id="prerequisites"><a href="#install-prerequisites">Prerequisites</a></h3>
-<h3 id="create-a-github-pages-static-site"><a href="#create-github-pages-site">Create a Github Pages static site</a></h3>
-<h3 id="setup-a-domain-with-aws-route53"><a href="#route53-configuration">Setup a domain with AWS Route53</a></h3>
-<h3 id="point-the-custom-domain-to-the-github-pages-site"><a href="#connect-domain-to-site">Point the custom domain to the Github Pages site</a></h3>
+<p>This tutorial will walk us through the following steps:</p>
+<h3 id="1-install-prerequisites"><a href="#install-prerequisites">1. Install Prerequisites</a></h3>
+<h3 id="2-create-github-pages-site"><a href="#create-github-pages-site">2. Create Github Pages Site</a></h3>
+<h3 id="3-aws-route-53-configuration"><a href="#aws-route-53-configuration">3. AWS Route 53 Configuration</a></h3>
+<h3 id="4-connect-custom-domain-to-site"><a href="#connect-custom-domain-to-site">4. Connect Custom Domain to Site</a></h3>
 <h2 id="details">Details</h2>
-<h3 id="install-prerequisites">Install Prerequisites</h3>
+<h4 id="install-prerequisites">Install Prerequisites</h4>
+<p>The following are dependencies for the rest of the work we will be doing, so use these links to setup any dependencies
+you don’t already have before proceeding to the remaining steps.</p>
 <ul>
   <li>install <a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby</a></li>
   <li>install <a href="https://bundler.io/">Bundler</a></li>
@@ -76,41 +80,48 @@
   <li>install <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git">Git</a></li>
 </ul>
 
-<h3 id="create-github-pages-site">Create Github Pages Site</h3>
-<p>We’ll be using <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll">these directions</a>
+<h4 id="create-github-pages-site">Create Github Pages Site</h4>
+<p>These steps will cover creating a Github Pages site with a default domain provided by Github.
+We’ll be using <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll">these directions</a>
 for reference.</p>
 <ol>
   <li>Create a github repository</li>
-  <li>Enable Github Pages for your new repository
+  <li>Enable Github Pages for your new repository by specifying the branch which you’d like it built from. We’ll use the <code class="language-plaintext highlighter-rouge">main</code>
+branch which is the default branch recommended by Github Pages. You can also build your site using a custom Github Action,
+but we will not be doing that in this tutorial.
 <img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/enable-github-pages-for-repo.jpg?raw=true" alt="" /></li>
   <li>Create a new jekyll site in the top-level directory of your new project. You should at most have <code class="language-plaintext highlighter-rouge">CNAME</code>, 
 <code class="language-plaintext highlighter-rouge">LICENSE</code>, and <code class="language-plaintext highlighter-rouge">README.md</code> files so running <code class="language-plaintext highlighter-rouge">jekyll new --skip-bundle . --force</code> shouldn’t overwrite any files, despite
 the warning.</li>
-  <li>Follow the directions to update the Gemfile and run <code class="language-plaintext highlighter-rouge">bundle install</code>. You may need to edit the version of the <code class="language-plaintext highlighter-rouge">Jekyll</code>
-gem in addition to the <code class="language-plaintext highlighter-rouge">github-pages</code> depending on Github’s <a href="https://pages.github.com/versions/">dependency version</a> for Jekyll.</li>
-  <li>Follow the remaining directions on testing your site locally and committing your work.</li>
+  <li>Follow the directions to update the Gemfile and run <code class="language-plaintext highlighter-rouge">bundle install</code>. You may need to edit the version of your <code class="language-plaintext highlighter-rouge">Jekyll</code>
+gem in addition to the <code class="language-plaintext highlighter-rouge">github-pages</code> gem depending on Github’s <a href="https://pages.github.com/versions/">dependency version</a> for Jekyll.</li>
+  <li>Follow the <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site">remaining directions</a> 
+on testing your site locally and committing/pushing your work. (“Creating your site” steps 15-18)</li>
 </ol>
 
-<h3 id="route53-configuration">Route53 Configuration</h3>
+<h4 id="aws-route-53-configuration">AWS Route 53 Configuration</h4>
+<p>In this section, we’ll be purchasing a custom domain from AWS to use with our site.</p>
 <ol>
   <li>Create an AWS account or login</li>
   <li>Navigate to the Route 53 service
 <img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/route-53-console.png?raw=true" alt="" /></li>
   <li>Choose a domain
 <img src="https://github.com/the-star-thrower/the-star-thrower.github.io/blob/master/assets/images/choose-domain.png?raw=true" alt="" />
-Today i’m favoring being cheap and carbohydrate polymers are on my mind, so i’ll go with the $9/year <code class="language-plaintext highlighter-rouge">.de</code> TLD
-and a snappy domain to talk about oligosaccharides.</li>
+I’ve gone with the inexpensive $9/year <code class="language-plaintext highlighter-rouge">.de</code> Top-Level Domain (TLD) and chosen <a href="oligosacchari.de">oligosacchari.de</a>. This
+is the country code TLD for Germany. If you’re not sure what TLD to use, I recommend sticking
+with <code class="language-plaintext highlighter-rouge">.com</code> which is commonly-used and memorable.</li>
   <li>Step through the domain registration process</li>
   <li>We now have a registered domain. There will be some latency while AWS configures this domain in its backend, 
 so after a few minutes, be sure to confirm you can see your domain in <code class="language-plaintext highlighter-rouge">Route 53</code> -&gt; <code class="language-plaintext highlighter-rouge">Domains</code> -&gt; <code class="language-plaintext highlighter-rouge">Registered Domains</code>. 
 Our next step is to ensure the domain directs us to our Github Pages-hosted site.</li>
 </ol>
 
-<h3 id="connect-domain-to-site">Connect Domain to Site</h3>
+<h4 id="connect-custom-domain-to-site">Connect Custom Domain to Site</h4>
 <p>Now that we have our Github Pages site setup and our Route 53 domain registered, we want to ensure our new domain
-directs us to our Github Pages site. For example, by default the domain for this website is <code class="language-plaintext highlighter-rouge">the-star-thrower.github.io</code>, 
-so I configured the custom domain <code class="language-plaintext highlighter-rouge">katherinetaylormaack.com</code> to also direct to this Github Pages-hosted site. We’ll be using
-<a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">these directions</a> as a reference.</p>
+directs us to our Github Pages site. For example, by default the domain for the Github Pages site i’ve created is 
+<code class="language-plaintext highlighter-rouge">katherinetaylormaack.com/test.github.io</code>, so I configured the custom domain <code class="language-plaintext highlighter-rouge">oligosacchari.de</code> to also direct to 
+my Github Pages-hosted site. We’ll be using <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">these directions</a>
+as a reference.</p>
 <ol>
   <li>In your Github Pages repository, navigate to <code class="language-plaintext highlighter-rouge">Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Pages</code> and under <code class="language-plaintext highlighter-rouge">Custom domain</code>, type your custom domain and save.
 Even if you receive the following error, Github should still successfully create a CNAME file in your project.
@@ -131,7 +142,7 @@ website you created. It should look something like <a href="http://oligosacchari
 
 <p><img src="https://gifdb.com/images/high/you-did-it-happy-willy-wonka-and-chocolate-factory-2s1venj99oc71li9.gif" alt="" /></p>
 
-<h3 id="extra-credit">Extra Credit</h3>
+<h4 id="extra-credit">Extra Credit</h4>
 <p>If you’d like to dress up your new website, try following <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll">these directions</a>
 to add a custom theme to your new site!</p>
 
